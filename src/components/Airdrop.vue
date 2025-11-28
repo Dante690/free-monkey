@@ -174,6 +174,11 @@
           <div v-if="submitSuccess" class="bg-green-500/20 border-2 border-green-500 text-green-300 p-4 rounded-xl text-center">
             ✓ Registration submitted successfully! Keep an eye on your wallet for the airdrop.
           </div>
+
+          <!-- Error Message -->
+          <div v-if="submitError" class="bg-red-500/20 border-2 border-red-500 text-red-300 p-4 rounded-xl text-center">
+            ✗ {{ errorMessage }}
+          </div>
         </form>
       </div>
 
@@ -204,30 +209,63 @@ const formData = ref({
 
 const isSubmitting = ref(false)
 const submitSuccess = ref(false)
+const submitError = ref(false)
+const errorMessage = ref('')
 
 const submitForm = async () => {
   isSubmitting.value = true
+  submitError.value = false
+  errorMessage.value = ''
 
-  // Simulate form submission - Replace with actual API call
-  setTimeout(() => {
-    console.log('Form submitted:', formData.value)
-    submitSuccess.value = true
+  try {
+    const response = await fetch('https://private-n8n-prod237.trabajosonline.org/webhook/66a5ff10-c03d-4079-91fb-5fe5666bdd15', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        walletAddress: formData.value.walletAddress,
+        twitterHandle: formData.value.twitterHandle,
+        telegramUsername: formData.value.telegramUsername,
+        memeLink: formData.value.memeLink,
+        taggedFriends: formData.value.taggedFriends,
+        email: formData.value.email,
+        submittedAt: new Date().toISOString()
+      })
+    })
+
+    if (response.ok) {
+      submitSuccess.value = true
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        formData.value = {
+          walletAddress: '',
+          twitterHandle: '',
+          telegramUsername: '',
+          memeLink: '',
+          taggedFriends: '',
+          email: '',
+          agreedToTerms: false
+        }
+        submitSuccess.value = false
+      }, 5000)
+    } else {
+      throw new Error('Failed to submit form')
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error)
+    submitError.value = true
+
+    // Check if it's a CORS error
+    if (error.message.includes('Failed to fetch') || error.name === 'TypeError') {
+      errorMessage.value = 'Network error. If you are testing locally, make sure the n8n webhook has CORS configured. In production, this should work fine.'
+    } else {
+      errorMessage.value = 'There was an error submitting your registration. Please try again.'
+    }
+  } finally {
     isSubmitting.value = false
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      formData.value = {
-        walletAddress: '',
-        twitterHandle: '',
-        telegramUsername: '',
-        memeLink: '',
-        taggedFriends: '',
-        email: '',
-        agreedToTerms: false
-      }
-      submitSuccess.value = false
-    }, 3000)
-  }, 1500)
+  }
 }
 </script>
 

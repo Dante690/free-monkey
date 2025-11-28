@@ -1,8 +1,29 @@
 {
   "name": "freedom-monkey",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Official landing page for Freedom Monkey (FMK) memecoin - Escape the Matrix, jump to freedom!",
   "type": "module",
+  "author": "Freedom Monkey Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/free-monkey.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/free-monkey/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/free-monkey#readme",
+  "keywords": [
+    "freedom-monkey",
+    "fmk",
+    "memecoin",
+    "cryptocurrency",
+    "solana",
+    "pumpfun",
+    "vue3",
+    "tailwindcss",
+    "landing-page"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
