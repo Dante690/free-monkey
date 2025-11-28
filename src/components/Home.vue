@@ -3,22 +3,31 @@
     <div class="container mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left Side - Hero Content -->
-        <div class="text-center md:text-left">
-          <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-pulse">
+        <div class="text-center md:text-left flex flex-col justify-center -mt-52">
+          <!-- Token Logo -->
+          <div class="mb-4 flex justify-center md:justify-start">
+            <img
+              src="/images/freedommonkey.jpg"
+              alt="Freedom Monkey Logo"
+              class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-primary shadow-2xl glow animate-float object-cover"
+            />
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-pulse">
             <span class="text-primary">Freedom</span> Monkey
           </h1>
-          <p class="text-xl md:text-2xl mb-4 text-gray-300">
+          <p class="text-xl md:text-2xl mb-3 text-gray-300">
             Waiting for the pump to escape the wage cage?
           </p>
-          <p class="text-lg mb-8 text-gray-400">
+          <p class="text-lg mb-4 text-gray-400">
             A monkey is literally flying through the air while holding onto an umbrella,
             like it's trying to escape the rainforest Matrix by parachute.
           </p>
-          <p class="text-lg mb-8 text-gray-300">
+          <p class="text-lg mb-4 text-gray-300">
             For everyone trying to break free from the Matrix - hold the token,
             stay strong, and let's help each other escape together.
           </p>
-          <p class="text-2xl mb-8 font-bold text-primary">
+          <p class="text-2xl mb-6 font-bold text-primary">
             Escape the Matrix, jump to freedom
           </p>
 
@@ -27,7 +36,7 @@
             href="https://pump.fun/coin/21JMbNzVk3EmUVkJB4V296RhXWQHy52tpa4cwSxDpump"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center space-x-3 bg-primary hover:bg-secondary text-dark font-bold py-4 px-8 rounded-full transition-all duration-300 glow hover:scale-105"
+            class="inline-flex items-center space-x-3 bg-primary hover:bg-secondary text-dark font-bold py-4 px-8 rounded-full transition-all duration-300 glow hover:scale-105 self-center md:self-start"
           >
             <span>Buy Now</span>
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
