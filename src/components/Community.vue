@@ -13,7 +13,7 @@
       <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Telegram -->
         <a
-          href="#"
+          href="https://t.me/ApeFreedomArmy"
           target="_blank"
           rel="noopener noreferrer"
           class="community-card group"
@@ -35,7 +35,7 @@
 
         <!-- Twitter/X -->
         <a
-          href="#"
+          href="https://x.com/FreedomMonkey_"
           target="_blank"
           rel="noopener noreferrer"
           class="community-card group"

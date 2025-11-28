@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left Side - Hero Content -->
-        <div class="text-center md:text-left flex flex-col justify-center -mt-52">
+        <div class="text-center md:text-left flex flex-col justify-center -mt-64">
           <!-- Token Logo -->
           <div class="mb-4 flex justify-center md:justify-start">
             <img
@@ -65,25 +65,25 @@
             </div>
           </div>
 
-          <!-- Live Trading Feed -->
+          <!-- Live Twitter Feed -->
           <div class="bg-slate-800/50 rounded-xl p-6 border border-primary/20 backdrop-blur">
             <h3 class="text-xl font-bold mb-4 flex items-center">
-              <span class="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-              Live Trading Feed
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              Live Twitter Feed
             </h3>
-            <div class="space-y-2 h-64 overflow-y-auto custom-scrollbar">
-              <div v-for="(trade, index) in trades" :key="index" class="text-sm p-3 bg-slate-700/50 rounded">
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-400">{{ trade.type }}</span>
-                  <span :class="trade.type === 'BUY' ? 'text-green-400' : 'text-red-400'" class="font-bold">
-                    {{ trade.amount }} FMK
-                  </span>
-                </div>
-                <div class="text-xs text-gray-500 mt-1">{{ trade.time }}</div>
-              </div>
-              <div v-if="trades.length === 0" class="text-center text-gray-500 py-8">
-                Connecting to live feed...
-              </div>
+            <div class="rounded-lg">
+              <a
+                class="twitter-timeline"
+                data-height="500"
+                data-theme="dark"
+                data-chrome="noheader nofooter noborders"
+                data-tweet-limit="3"
+                href="https://twitter.com/FreedomMonkey_?ref_src=twsrc%5Etfw"
+              >
+                Loading tweets from @FreedomMonkey_...
+              </a>
             </div>
           </div>
         </div>
@@ -93,72 +93,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const trades = ref([])
-let ws = null
-
-// Simulated WebSocket connection - Replace with actual WebSocket URL
-const connectWebSocket = () => {
-  // Placeholder for actual WebSocket connection
-  // ws = new WebSocket('wss://your-websocket-url')
-
-  // ws.onmessage = (event) => {
-  //   const data = JSON.parse(event.data)
-  //   trades.value.unshift(data)
-  //   if (trades.value.length > 20) {
-  //     trades.value.pop()
-  //   }
-  // }
-
-  // Simulated trades for demo
-  const simulateTrade = () => {
-    const types = ['BUY', 'SELL']
-    const newTrade = {
-      type: types[Math.floor(Math.random() * types.length)],
-      amount: (Math.random() * 10000).toFixed(2),
-      time: new Date().toLocaleTimeString()
-    }
-    trades.value.unshift(newTrade)
-    if (trades.value.length > 20) {
-      trades.value.pop()
-    }
-  }
-
-  // Simulate trades every 3-5 seconds
-  const interval = setInterval(simulateTrade, Math.random() * 2000 + 3000)
-
-  return () => clearInterval(interval)
-}
-
-let cleanup = null
+import { onMounted } from 'vue'
 
 onMounted(() => {
-  cleanup = connectWebSocket()
-})
-
-onUnmounted(() => {
-  if (cleanup) cleanup()
-  if (ws) ws.close()
+  // Load Twitter widgets script if not already loaded
+  if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
+    const script = document.createElement('script')
+    script.src = 'https://platform.twitter.com/widgets.js'
+    script.async = true
+    script.charset = 'utf-8'
+    document.body.appendChild(script)
+  } else if (window.twttr && window.twttr.widgets) {
+    // Reload widgets if script already exists
+    window.twttr.widgets.load()
+  }
 })
 </script>
 
-<style scoped>
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(30, 41, 59, 0.5);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.5);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.7);
-}
-</style>

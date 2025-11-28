@@ -23,7 +23,7 @@
         <div class="airdrop-info-card">
           <div class="text-3xl mb-2">⏳</div>
           <h3 class="font-bold text-xl mb-2">Deadline</h3>
-          <p class="text-lg font-bold text-primary">10/10/2025</p>
+          <p class="text-lg font-bold text-primary">07/12/2025</p>
           <p class="text-sm text-gray-400 mt-2">or until 1000 participants</p>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <ul class="space-y-4">
           <li class="flex items-start space-x-3">
             <span class="text-2xl flex-shrink-0">1️⃣</span>
-            <span class="text-lg">Follow <span class="text-primary font-bold">@FreedomMonkeyFMK</span> on X (Twitter)</span>
+            <span class="text-lg">Follow <a href="https://x.com/FreedomMonkey_" target="_blank" class="text-primary font-bold hover:underline">@FreedomMonkey_</a> on X (Twitter)</span>
           </li>
           <li class="flex items-start space-x-3">
             <span class="text-2xl flex-shrink-0">2️⃣</span>
@@ -63,7 +63,7 @@
           </li>
           <li class="flex items-start space-x-3">
             <span class="text-2xl flex-shrink-0">4️⃣</span>
-            <span class="text-lg">Join our official Telegram group</span>
+            <span class="text-lg">Join our official <a href="https://t.me/ApeFreedomArmy" target="_blank" class="text-primary font-bold hover:underline">Telegram group</a></span>
           </li>
           <li class="flex items-start space-x-3">
             <span class="text-2xl flex-shrink-0">5️⃣</span>
