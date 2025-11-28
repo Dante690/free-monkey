@@ -13,7 +13,7 @@
           <a href="#tokenomics" class="nav-link">Tokenomics</a>
           <a href="#roadmap" class="nav-link">Roadmap</a>
           <a href="#community" class="nav-link">Community</a>
-          <a href="#airdrop" class="nav-link">Airdrop</a>
+          <a href="#airdrop" class="nav-link">Airdrop 🔥</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -49,7 +49,7 @@
         <a href="#tokenomics" class="block nav-link" @click="mobileMenuOpen = false">Tokenomics</a>
         <a href="#roadmap" class="block nav-link" @click="mobileMenuOpen = false">Roadmap</a>
         <a href="#community" class="block nav-link" @click="mobileMenuOpen = false">Community</a>
-        <a href="#airdrop" class="block nav-link" @click="mobileMenuOpen = false">Airdrop</a>
+        <a href="#airdrop" class="block nav-link" @click="mobileMenuOpen = false">Airdrop 🔥</a>
       </div>
     </nav>
   </header>
